@@ -1,0 +1,9 @@
+{
+  "utterance": "Turn the led1 off",
+  "intent_type": "Esp8266CmdIntent",
+  "intent": {
+    "CommandKeyword": "turn",
+    "ModuleKeyword": "led1",
+    "ActionKeyword": "off"
+  }
+}
