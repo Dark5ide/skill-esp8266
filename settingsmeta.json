@@ -1,21 +1,33 @@
 {
     "name": "ESP8266",
+    "color": "#8B0000",
     "skillMetadata": {
         "sections": [
             {
+                "name": "Description",
+                "fields": [
+                    {
+                        "type": "label",
+                        "label": "<b>Units</b> are the access point of your ESP8266s. Seperate each access point by a coma. It can be an IP address or a domain name. <br><br>You can choose between those protocols to communicate with the ESP8266: <ul><li>http_get</li><li>ws</li><li>mqtt</li></ul>"
+                    }
+                ]
+            },
+            {   
                 "name": "Devices",
                 "fields": [
                     {
                         "name": "units",
                         "type": "text",
                         "label": "Units",
-                        "value": "esp8266.local"
+                        "placeholder": "esp8266.local",
+                        "value": ""
                     },
                     {
                         "name": "protocol",
                         "type": "text",
-                        "label": "Protocol",
-                        "value": "http_get"
+                        "label": "Chosen Protocol",
+                        "placeholder": "ws",
+                        "value": ""
                     }
                 ]
             },
@@ -25,8 +37,9 @@
                     {
                         "name": "ws-port",
                         "type": "number",
-                        "label": "Port",
-                        "value": "81"
+                        "label": "Websocket Port",
+                        "placeholder": "81",
+                        "value": ""
                     }
                 ]
             },
@@ -36,32 +49,37 @@
                     {
                         "name": "mqtt-host",
                         "type": "text",
-                        "label": "Host",
-                        "value": "test.mosquitto.org"
+                        "label": "MQTT Host",
+                        "placeholder": "test.mosquitto.org",
+                        "value": ""
                     },
                     {
                         "name": "mqtt-port",
                         "type": "number",
-                        "label": "Port",
-                        "value": "1883"
+                        "label": "MQTT Port",
+                        "placeholder": "1883",
+                        "value": ""
                     },
                     {
                         "name": "mqtt-auth",
                         "type": "text",
-                        "label": "Authentication",
-                        "value": "no"
+                        "label": "MQTT Authentication",
+                        "placeholder": "no",
+                        "value": ""
                     },
                     {
                         "name": "mqtt-user",
                         "type": "text",
-                        "label": "User",
-                        "value": "youruser"
+                        "label": "MQTT User",
+                        "placeholder": "youruser",
+                        "value": ""
                     },
                     {
                         "name": "mqtt-pass",
                         "type": "password",
-                        "label": "Password",
-                        "value": "yourpass"
+                        "label": "MQTT Password",
+                        "placeholder": "yourpass",
+                        "value": ""
                     }
                 ]
             }
