@@ -77,7 +77,7 @@ class Esp8266Skill(MycroftSkill):
                 if (self.mqtt_auth == "yes"):
                     mqttc.username_pw_set(username=str(self.mqtt_user), password=str(self.mqtt_pass))
                 mqttc.connect(host=str(self.mqtt_host), port=self.mqtt_port)
-                mqttc.publish("/mycroft/" + esp_mdl_name, cmd_name) # todo : use json to send module and command name
+                mqttc.publish("/mycroft/homy", esp_mdl_name + "-" + cmd_name) # todo : use json to send module and command name
                 mqttc.disconnect()
             else:
                 to_esp = esp_mdl_name + "?cmd=" + cmd_name
