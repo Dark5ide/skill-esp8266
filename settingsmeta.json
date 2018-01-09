@@ -1,0 +1,70 @@
+{
+    "name": "ESP8266",
+    "skillMetadata": {
+        "sections": [
+            {
+                "name": "Devices",
+                "fields": [
+                    {
+                        "name": "units",
+                        "type": "text",
+                        "label": "Units",
+                        "value": "esp8266.local"
+                    },
+                    {
+                        "name": "protocol",
+                        "type": "text",
+                        "label": "Protocol",
+                        "value": "http_get"
+                    }
+                ]
+            },
+            {
+                "name": "Websocket",
+                "fields": [
+                    {
+                        "name": "ws-port",
+                        "type": "number",
+                        "label": "Port",
+                        "value": "81"
+                    }
+                ]
+            },
+            {
+                "name": "MQTT",
+                "fields": [
+                    {
+                        "name": "mqtt-host",
+                        "type": "text",
+                        "label": "Host",
+                        "value": "test.mosquitto.org"
+                    },
+                    {
+                        "name": "mqtt-port",
+                        "type": "number",
+                        "label": "Port",
+                        "value": "1883"
+                    },
+                    {
+                        "name": "mqtt-auth",
+                        "type": "text",
+                        "label": "Authentication",
+                        "value": "no"
+                    },
+                    {
+                        "name": "mqtt-user",
+                        "type": "text",
+                        "label": "User",
+                        "value": "youruser"
+                    },
+                    {
+                        "name": "mqtt-pass",
+                        "type": "password",
+                        "label": "Password",
+                        "value": "yourpass"
+                    }
+                ]
+            }
+        ]
+    }
+}
