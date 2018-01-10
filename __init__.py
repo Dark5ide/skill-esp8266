@@ -33,22 +33,22 @@ class Esp8266Skill(MycroftSkill):
 
     def __init__(self):
         super(Esp8266Skill, self).__init__(name="Esp8266Skill")
-        self.esp_units = self.config.get("units")
+        self.esp_units = self.settings["units"]
         if type(self.esp_units) == unicode:
             self.esp_units = [self.esp_units]
-        self.protocol = self.config.get("protocol")
+        self.protocol = self.settings["protocol"]
         
         # websocket parameter
         self.ws = None
-        self.ws_port = self.config.get("ws-port")
+        self.ws_port = int(self.settings["ws-port"])
         
         # mqtt parameter
-        self.mqtt_host = self.config.get("mqtt-host")
-        self.mqtt_port = self.config.get("mqtt-port")
-        self.mqtt_auth = self.config.get("mqtt-auth")
-        self.mqtt_user = self.config.get("mqtt-user")
-        self.mqtt_pass = self.config.get("mqtt-pass")    
-    
+        self.mqtt_host = self.settings["mqtt-host"]
+        self.mqtt_port = int(self.settings["mqtt-port"])
+        self.mqtt_auth = self.settings["mqtt-auth"]
+        self.mqtt_user = self.settings["mqtt-user"]
+        self.mqtt_pass = self.settings["mqtt-pass"]
+        
     def initialize(self):
         self.load_data_files(dirname(__file__))
         self. __build_single_command()        
