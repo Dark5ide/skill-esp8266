@@ -29,7 +29,7 @@ This Skill has been created for the makers and hackers who want to build their o
 
 This skill requires the installation of paho-mqtt : `pip install paho-mqtt`.
 
-The arduino code for the ESP8266 can be found [here](https://github.com/Dark5ide/ESP8266_Controler). 
+The arduino code for the ESP8266 can be found [here](https://github.com/Dark5ide/ESP8266_Controller). 
 
 ## Credits 
 Dark5ide
