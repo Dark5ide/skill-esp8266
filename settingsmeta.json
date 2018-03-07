@@ -8,7 +8,7 @@
                 "fields": [
                     {
                         "type": "label",
-                        "label": "<b>Units</b> are the access point of your ESP8266s. Seperate each access point by a coma. It can be an IP address or a domain name. <br><br>You can choose between those protocols to communicate with the ESP8266: <ul><li>http_get</li><li>ws</li><li>mqtt</li></ul>"
+                        "label": "<b>Units</b> are the access point of your ESP8266s. Seperate each access point by a coma. It can be an IP address or a domain name. <br><br>You can choose between those protocols to communicate with the ESP8266: <ul><li>HTTP Get</li><li>Websocket</li><li>MQTT</li></ul>"
                     }
                 ]
             },
@@ -24,9 +24,9 @@
                     },
                     {
                         "name": "protocol",
-                        "type": "text",
+                        "type": "select",
                         "label": "Chosen Protocol",
-                        "placeholder": "ws",
+                        "option": "HTTP Get|http_get;Websocket|ws;MQTT|mqtt",
                         "value": ""
                     }
                 ]
@@ -62,10 +62,10 @@
                     },
                     {
                         "name": "mqtt-auth",
-                        "type": "text",
+                        "type": "select",
                         "label": "MQTT Authentication",
-                        "placeholder": "no",
-                        "value": ""
+                        "option": "No|no;Yes|yes",
+                        "value": "no"
                     },
                     {
                         "name": "mqtt-user",
