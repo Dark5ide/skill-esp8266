@@ -38,7 +38,7 @@ The arduino code for the ESP8266 can be found [here](https://github.com/Dark5ide
 * Clean the code
 * MQTT protocol implementation. **(done)**
 * Put the Arduino code of the ESP8266 on github **(done)** : https://github.com/Dark5ide/ESP8266_Controler3
-* * Use JSON format for the information transmitted. **(done)**
+* Use JSON format for the information transmitted. **(done)**
 
 ## Credits
 
