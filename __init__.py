@@ -24,10 +24,13 @@ from mycroft.util.log import getLogger
 from urllib2 import urlopen
 from websocket import create_connection
 import paho.mqtt.client as mqtt
+import json
 
 __author__ = 'Dark5ide'
 
 LOGGER = getLogger(__name__)
+
+msg_json = {"id" : 0, "name" : "esp8266", "devices" : [ 1, {"module" : "", "cmd" : ""}]}
 
 class Esp8266Skill(MycroftSkill):
 
@@ -61,31 +64,41 @@ class Esp8266Skill(MycroftSkill):
         cmd_name = message.data.get("CommandKeyword")
         mdl_name = message.data.get("ModuleKeyword")
         act_name = message.data.get("ActionKeyword")
-        esp_mdl_name = mdl_name.replace(' ', '_')
+        esp_mdl_name = mdl_name.replace(' ', '')
         
         if act_name:
             cmd_name += '_' + act_name
 
+        msg_json["devices"][1]["module"] = esp_mdl_name
+        msg_json["devices"][1]["cmd"] = cmd_name 
+        
         try:
+        
             if (self.protocol == "ws"):
                 if self.ws is None:
                     self.ws = [create_connection("ws://" + u + ":81/") for u in self.esp_units]
                 for ws_connect in self.ws:
-                    ws_connect.send(esp_mdl_name + "-" + cmd_name)
+                    msg_str = json.dumps(msg_json) # format the JSON in string
+                    ws_connect.send(msg_str)
+                    
             elif (self.protocol == "mqtt"):
                 mqttc = mqtt.Client("MycroftAI")
                 if (self.mqtt_auth == "yes"):
                     mqttc.username_pw_set(username=str(self.mqtt_user), password=str(self.mqtt_pass))
                 mqttc.connect(host=str(self.mqtt_host), port=self.mqtt_port)
-                mqttc.publish("/mycroft/homy", esp_mdl_name + "-" + cmd_name) # todo : use json to send module and command name
+                msg_str = json.dumps(msg_json) # format the JSON in string
+                mqttc.publish("mycroft/homy/cmd", msg_str)
                 mqttc.disconnect()
+                
             else:
                 to_esp = esp_mdl_name + "?cmd=" + cmd_name
-                # exemple : http://esp8266.local/led0?cmd=turn_on
+                # example : http://esp8266.local/led0?cmd=turn_on
                 for u in self.esp_units:
                     urlopen("http://" + u + "/" + to_esp)
                 #urlopen("http://esp8266.local/" + to_esp)
+                
             self.speak_dialog("cmd.sent")
+            
         except Exception as e:
             self.ws = None
             self.speak_dialog("not.found", {"command": cmd_name, "action": act_name, "module": mdl_name})
