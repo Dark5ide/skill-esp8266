@@ -27,7 +27,7 @@
                         "type": "select",
                         "label": "Chosen Protocol",
                         "option": "HTTP Get|http_get;Websocket|ws;MQTT|mqtt",
-                        "value": ""
+                        "value": "mqtt"
                     }
                 ]
             },
@@ -39,7 +39,7 @@
                         "type": "number",
                         "label": "Websocket Port",
                         "placeholder": "81",
-                        "value": ""
+                        "value": "81"
                     }
                 ]
             },
@@ -51,14 +51,14 @@
                         "type": "text",
                         "label": "MQTT Host",
                         "placeholder": "test.mosquitto.org",
-                        "value": ""
+                        "value": "test.mosquitto.org"
                     },
                     {
                         "name": "mqtt-port",
                         "type": "number",
                         "label": "MQTT Port",
                         "placeholder": "1883",
-                        "value": ""
+                        "value": "1883"
                     },
                     {
                         "name": "mqtt-auth",
