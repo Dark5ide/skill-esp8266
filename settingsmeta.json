@@ -26,7 +26,7 @@
                         "name": "protocol",
                         "type": "select",
                         "label": "Chosen Protocol",
-                        "option": "HTTP Get|http_get;Websocket|ws;MQTT|mqtt",
+                        "options": "HTTP Get|http_get;Websocket|ws;MQTT|mqtt",
                         "value": "mqtt"
                     }
                 ]
@@ -64,7 +64,7 @@
                         "name": "mqtt-auth",
                         "type": "select",
                         "label": "MQTT Authentication",
-                        "option": "No|no;Yes|yes",
+                        "options": "No|no;Yes|yes",
                         "value": "no"
                     },
                     {
