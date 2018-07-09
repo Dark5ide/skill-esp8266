@@ -21,7 +21,7 @@ from adapt.intent import IntentBuilder
 from mycroft.skills.core import MycroftSkill
 from mycroft.util.log import getLogger
 
-from urllib2 import urlopen
+from urllib.request import urlopen
 from websocket import create_connection
 import paho.mqtt.client as mqtt
 import json
@@ -37,7 +37,7 @@ class Esp8266Skill(MycroftSkill):
     def __init__(self):
         super(Esp8266Skill, self).__init__(name="Esp8266Skill")
         self.esp_units = self.settings["units"]
-        if type(self.esp_units) == unicode:
+        if type(self.esp_units) == str:
             self.esp_units = [self.esp_units]
         self.protocol = self.settings["protocol"]
         
