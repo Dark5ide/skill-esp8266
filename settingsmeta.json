@@ -20,7 +20,7 @@
                         "type": "text",
                         "label": "Units",
                         "placeholder": "esp8266.local",
-                        "value": ""
+                        "value": "esp8266.local"
                     },
                     {
                         "name": "protocol",
