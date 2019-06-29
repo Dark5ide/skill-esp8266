@@ -72,7 +72,8 @@ class Esp8266Skill(MycroftSkill):
         self. __build_single_command()        
         
     def __build_single_command(self):
-        intent = IntentBuilder("Esp8266CmdIntent").require("CommandKeyword").require("ModuleKeyword").optionally("ActionKeyword").build()
+        intent = IntentBuilder("Esp8266CmdIntent").require("CommandKeyword").\
+            require("ModuleKeyword").optionally("ActionKeyword").build()
         self.register_intent(intent, self.handle_single_command)
         
     def handle_single_command(self, message):
