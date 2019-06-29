@@ -30,7 +30,8 @@ __author__ = 'Dark5ide'
 
 LOGGER = getLogger(__name__)
 
-msg_json = {"id" : 0, "name" : "esp8266", "devices" : [ 1, {"module" : "", "cmd" : ""}]}
+msg_json = {"id": 0, "name": "esp8266", "devices": [1, {"module": "", "cmd": ""}]}
+
 
 class Esp8266Skill(MycroftSkill):
 
@@ -88,19 +89,19 @@ class Esp8266Skill(MycroftSkill):
         
         try:
         
-            if (self.protocol == "ws"):
+            if self.protocol == "ws":
                 if self.ws is None:
                     self.ws = [create_connection("ws://" + u + ":81/") for u in self.esp_units]
                 for ws_connect in self.ws:
-                    msg_str = json.dumps(msg_json) # format the JSON in string
+                    msg_str = json.dumps(msg_json)  # format the JSON in string
                     ws_connect.send(msg_str)
                     
-            elif (self.protocol == "mqtt"):
+            elif self.protocol == "mqtt":
                 mqttc = mqtt.Client("MycroftAI")
-                if (self.mqtt_auth == "yes"):
+                if self.mqtt_auth == "yes":
                     mqttc.username_pw_set(username=str(self.mqtt_user), password=str(self.mqtt_pass))
                 mqttc.connect(host=str(self.mqtt_host), port=self.mqtt_port)
-                msg_str = json.dumps(msg_json) # format the JSON in string
+                msg_str = json.dumps(msg_json)  # format the JSON in string
                 mqttc.publish("mycroft/homy/cmd", msg_str)
                 mqttc.disconnect()
                 
@@ -109,7 +110,7 @@ class Esp8266Skill(MycroftSkill):
                 # example : http://esp8266.local/led0?cmd=turn_on
                 for u in self.esp_units:
                     urlopen("http://" + u + "/" + to_esp)
-                #urlopen("http://esp8266.local/" + to_esp)
+                # urlopen("http://esp8266.local/" + to_esp)
                 
             self.speak_dialog("cmd.sent")
             
@@ -120,6 +121,7 @@ class Esp8266Skill(MycroftSkill):
         
     def stop(self):
         pass
-        
+
+
 def create_skill():
     return Esp8266Skill()
